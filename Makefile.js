@@ -26,7 +26,7 @@ const lodash = require("lodash"),
     ejs = require("ejs"),
     loadPerf = require("load-perf"),
     yaml = require("js-yaml"),
-    CLIEngine = require("./lib/cli-engine");
+    { CLIEngine } = require("./lib/cli-engine");
 
 const { cat, cd, cp, echo, exec, exit, find, ls, mkdir, pwd, rm, test } = require("shelljs");
 

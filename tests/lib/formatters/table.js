@@ -23,7 +23,6 @@ describe("formatter:table", () => {
         originalChalkEnabled = chalk.enabled;
         chalk.enabled = false;
     });
-
     after(() => {
         chalk.enabled = originalChalkEnabled;
     });
