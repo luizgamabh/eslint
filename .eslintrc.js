@@ -39,7 +39,7 @@ module.exports = {
     overrides: [
         {
             files: ["lib/rules/*", "tools/internal-rules/*"],
-            excludedFiles: ["tools/internal-rules/index.js"],
+            excludedFiles: ["index.js"],
             rules: {
                 "internal-rules/no-invalid-meta": "error",
                 "internal-rules/consistent-docs-description": "error"
@@ -56,6 +56,7 @@ module.exports = {
             }
         }, {
             files: ["lib/rules/*"],
+            excludedFiles: ["index.js"],
             rules: {
                 "internal-rules/consistent-docs-url": "error"
             }

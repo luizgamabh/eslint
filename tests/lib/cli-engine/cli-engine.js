@@ -17,7 +17,7 @@ const assert = require("chai").assert,
     fs = require("fs"),
     os = require("os"),
     hash = require("../../../lib/cli-engine/hash"),
-    { FileEnumerator } = require("../../../lib/lookup");
+    { FileEnumerator } = require("../../../lib/cli-engine/lookup");
 
 const proxyquire = require("proxyquire").noCallThru().noPreserveCache();
 
@@ -784,11 +784,12 @@ describe("CLIEngine", () => {
                 configFile: ".eslintrc.js"
             });
 
-            const report = engine.executeOnFiles(["lib/*rules*"]);
+            const report = engine.executeOnFiles(["lib/init/config-*"]);
 
-            assert.strictEqual(report.results.length, 2);
+            assert.strictEqual(report.results.length, 3);
             assert.strictEqual(report.results[0].messages.length, 0);
             assert.strictEqual(report.results[1].messages.length, 0);
+            assert.strictEqual(report.results[2].messages.length, 0);
         });
 
         it("should handle multiple patterns with overlapping files", () => {
@@ -798,11 +799,12 @@ describe("CLIEngine", () => {
                 configFile: ".eslintrc.js"
             });
 
-            const report = engine.executeOnFiles(["lib/rules.js", "lib/*rules*", "lib/{rules,built-in-rules-index}.js"]);
+            const report = engine.executeOnFiles(["lib/init/config-initializer.js", "lib/init/config-*", "lib/init/{config-initializer,config-rule}.js"]);
 
-            assert.strictEqual(report.results.length, 2);
+            assert.strictEqual(report.results.length, 3);
             assert.strictEqual(report.results[0].messages.length, 0);
             assert.strictEqual(report.results[1].messages.length, 0);
+            assert.strictEqual(report.results[2].messages.length, 0);
         });
 
         it("should report zero messages when given a config file and a valid file and espree as parser", () => {

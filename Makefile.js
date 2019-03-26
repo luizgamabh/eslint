@@ -66,6 +66,7 @@ const NODE = "node ", // intentional extra space
     // Files
     JSON_FILES = find("conf/").filter(fileType("json")),
     MARKDOWN_FILES_ARRAY = find("docs/").concat(ls(".")).filter(fileType("md")),
+    RULE_FILES = glob.sync("lib/rules/*.js").filter(file => path.basename(file) !== "index.js" && !path.basename(file).startsWith("_")),
     TEST_FILES = "\"tests/{bin,lib,tools}/**/*.js\"",
     PERF_ESLINTRC = path.join(PERF_TMP_DIR, "eslintrc.yml"),
     PERF_MULTIFILES_TARGET_DIR = path.join(PERF_TMP_DIR, "eslint"),
@@ -119,10 +120,8 @@ function execSilent(cmd) {
  * @private
  */
 function generateBlogPost(releaseInfo, prereleaseMajorVersion) {
-    const ruleList = ls("lib/rules")
-
-        // Strip the .js extension
-        .map(ruleFileName => ruleFileName.replace(/\.js$/u, ""))
+    const ruleList = RULE_FILES
+        .map(file => path.basename(file, ".js"))
 
         /*
          * Sort by length descending. This ensures that rule names which are substrings of other rule names are not
@@ -171,15 +170,14 @@ function generateFormatterExamples(formatterInfo, prereleaseVersion) {
 
 /**
  * Generate a doc page that lists all of the rules and links to them
- * @param {string} basedir The directory in which to look for code.
  * @returns {void}
  */
-function generateRuleIndexPage(basedir) {
+function generateRuleIndexPage() {
     const outputFile = "../eslint.github.io/_data/rules.yml",
         categoryList = "conf/category-list.json",
         categoriesData = JSON.parse(cat(path.resolve(categoryList)));
 
-    find(path.join(basedir, "/lib/rules/")).filter(fileType("js"))
+    RULE_FILES
         .map(filename => [filename, path.basename(filename, ".js")])
         .sort((a, b) => a[1].localeCompare(b[1]))
         .forEach(pair => {
@@ -770,7 +768,7 @@ target.gensite = function(prereleaseVersion) {
 
     // 11. Generate rule listing page
     echo("> Generating the rule listing (Step 11)");
-    generateRuleIndexPage(process.cwd());
+    generateRuleIndexPage();
 
     // 12. Delete temporary directory
     echo("> Removing the temporary directory (Step 12)");
@@ -802,10 +800,9 @@ target.checkRuleFiles = function() {
     echo("Validating rules");
 
     const ruleTypes = require("./tools/rule-types.json");
-    const ruleFiles = find("lib/rules/").filter(fileType("js"));
     let errors = 0;
 
-    ruleFiles.forEach(filename => {
+    RULE_FILES.forEach(filename => {
         const basename = path.basename(filename, ".js");
         const docFilename = `docs/rules/${basename}.md`;
 
@@ -857,7 +854,7 @@ target.checkRuleFiles = function() {
         }
 
         // check parity between rules index file and rules directory
-        const builtInRulesIndexPath = "./lib/built-in-rules-index";
+        const builtInRulesIndexPath = "./lib/rules/index.js";
         const ruleIdsInIndex = require(builtInRulesIndexPath);
         const ruleEntryFromIndexIsMissing = !(basename in ruleIdsInIndex);
 

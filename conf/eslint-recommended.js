@@ -6,7 +6,7 @@
 
 "use strict";
 
-const builtInRules = require("../lib/built-in-rules-index");
+const builtInRules = require("../lib/rules");
 
 module.exports = {
     rules: Object.assign({}, ...Object.keys(builtInRules).map(ruleId => ({

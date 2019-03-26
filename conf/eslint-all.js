@@ -9,7 +9,7 @@
 // Requirements
 //------------------------------------------------------------------------------
 
-const builtInRules = require("../lib/built-in-rules-index");
+const builtInRules = require("../lib/rules");
 
 //------------------------------------------------------------------------------
 // Helpers

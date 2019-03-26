@@ -37,7 +37,7 @@ describe("cli", () => {
         error: sinon.spy()
     };
     const cli = proxyquire("../../lib/cli", {
-        "./util/logging": log
+        "./shared/logging": log
     });
 
     /**
@@ -58,7 +58,7 @@ describe("cli", () => {
 
         const localCLI = proxyquire("../../lib/cli", {
             "./cli-engine/index": { CLIEngine: fakeCLIEngine },
-            "./util/logging": log
+            "./shared/logging": log
         });
 
         localCLI.execute(cmd);
@@ -709,7 +709,7 @@ describe("cli", () => {
 
             localCLI = proxyquire("../../lib/cli", {
                 "./cli-engine/index": { CLIEngine: fakeCLIEngine },
-                "./util/logging": log
+                "./shared/logging": log
             });
 
             localCLI.execute("--no-inline-config .");
@@ -731,7 +731,7 @@ describe("cli", () => {
 
             localCLI = proxyquire("../../lib/cli", {
                 "./cli-engine/index": { CLIEngine: fakeCLIEngine },
-                "./util/logging": log
+                "./shared/logging": log
             });
 
             const exitCode = localCLI.execute(".");
@@ -767,7 +767,7 @@ describe("cli", () => {
 
             localCLI = proxyquire("../../lib/cli", {
                 "./cli-engine/index": { CLIEngine: fakeCLIEngine },
-                "./util/logging": log
+                "./shared/logging": log
             });
 
             const exitCode = localCLI.execute("--fix .");
@@ -804,7 +804,7 @@ describe("cli", () => {
 
             localCLI = proxyquire("../../lib/cli", {
                 "./cli-engine/index": { CLIEngine: fakeCLIEngine },
-                "./util/logging": log
+                "./shared/logging": log
             });
 
             const exitCode = localCLI.execute("--fix .");
@@ -841,7 +841,7 @@ describe("cli", () => {
 
             localCLI = proxyquire("../../lib/cli", {
                 "./cli-engine/index": { CLIEngine: fakeCLIEngine },
-                "./util/logging": log
+                "./shared/logging": log
             });
 
             const exitCode = localCLI.execute("--fix --quiet .");
@@ -857,7 +857,7 @@ describe("cli", () => {
 
             localCLI = proxyquire("../../lib/cli", {
                 "./cli-engine/index": { CLIEngine: fakeCLIEngine },
-                "./util/logging": log
+                "./shared/logging": log
             });
 
             const exitCode = localCLI.execute("--fix .", "foo = bar;");
@@ -891,7 +891,7 @@ describe("cli", () => {
 
             localCLI = proxyquire("../../lib/cli", {
                 "./cli-engine/index": { CLIEngine: fakeCLIEngine },
-                "./util/logging": log
+                "./shared/logging": log
             });
 
             const exitCode = localCLI.execute("--fix-dry-run .");
@@ -921,7 +921,7 @@ describe("cli", () => {
 
             localCLI = proxyquire("../../lib/cli", {
                 "./cli-engine/index": { CLIEngine: fakeCLIEngine },
-                "./util/logging": log
+                "./shared/logging": log
             });
 
             const exitCode = localCLI.execute("--fix-dry-run --fix-type suggestion .");
@@ -956,7 +956,7 @@ describe("cli", () => {
 
             localCLI = proxyquire("../../lib/cli", {
                 "./cli-engine/index": { CLIEngine: fakeCLIEngine },
-                "./util/logging": log
+                "./shared/logging": log
             });
 
             const exitCode = localCLI.execute("--fix-dry-run .");
@@ -993,7 +993,7 @@ describe("cli", () => {
 
             localCLI = proxyquire("../../lib/cli", {
                 "./cli-engine/index": { CLIEngine: fakeCLIEngine },
-                "./util/logging": log
+                "./shared/logging": log
             });
 
             const exitCode = localCLI.execute("--fix-dry-run --quiet .");
@@ -1029,7 +1029,7 @@ describe("cli", () => {
 
             localCLI = proxyquire("../../lib/cli", {
                 "./cli-engine/index": { CLIEngine: fakeCLIEngine },
-                "./util/logging": log
+                "./shared/logging": log
             });
 
             const exitCode = localCLI.execute("--fix-dry-run .", "foo = bar;");
@@ -1044,7 +1044,7 @@ describe("cli", () => {
 
             localCLI = proxyquire("../../lib/cli", {
                 "./cli-engine/index": { CLIEngine: fakeCLIEngine },
-                "./util/logging": log
+                "./shared/logging": log
             });
 
             const exitCode = localCLI.execute("--fix --fix-dry-run .", "foo = bar;");
