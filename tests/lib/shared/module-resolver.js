@@ -11,13 +11,13 @@
 const path = require("path"),
     assert = require("chai").assert,
     leche = require("leche"),
-    ModuleResolver = require("../../../../lib/cli-engine/lookup/module-resolver");
+    ModuleResolver = require("../../../lib/shared/module-resolver");
 
 //------------------------------------------------------------------------------
 // Data
 //------------------------------------------------------------------------------
 
-const FIXTURES_PATH = path.resolve(__dirname, "../../../fixtures/module-resolver");
+const FIXTURES_PATH = path.resolve(__dirname, "../../fixtures/module-resolver");
 
 //------------------------------------------------------------------------------
 // Tests

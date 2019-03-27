@@ -42,7 +42,7 @@ describe("configInitializer", () => {
     };
     const requireStubs = {
         "../shared/logging": log,
-        "../cli-engine/lookup/module-resolver": {
+        "../shared/module-resolver": {
 
             /**
              * @returns {string} The path to local eslint to test.

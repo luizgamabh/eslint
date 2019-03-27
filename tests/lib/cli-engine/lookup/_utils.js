@@ -293,7 +293,9 @@ function defineConfigArrayFactoryWithInmemoryFileSystem({
 
     stubs.fs = fs;
     stubs["import-fresh"] = fsImportFresh.bind(null, fs, stubs);
-    stubs["./module-resolver"] = { resolve: fsResolve.bind(null, fs) };
+    stubs["../../shared/module-resolver"] = {
+        resolve: fsResolve.bind(null, fs)
+    };
 
     /*
      * Write all files to the in-memory file system and compile all JavaScript
