@@ -46,6 +46,20 @@ const configSchema = {
             ]
         },
 
+        // Array Config at top-level.
+        arrayConfig: {
+            type: "array",
+            items: {
+                anyOf: [
+                    { type: "string" },
+                    { $ref: "#/definitions/arrayConfig" },
+                    { $ref: "#/definitions/objectConfig" },
+                    { $ref: "#/definitions/overrideConfig" }
+                ]
+            },
+            additionalItems: false
+        },
+
         // Config at top-level.
         objectConfig: {
             type: "object",
@@ -73,7 +87,10 @@ const configSchema = {
         }
     },
 
-    $ref: "#/definitions/objectConfig"
+    anyOf: [
+        { $ref: "#/definitions/arrayConfig" },
+        { $ref: "#/definitions/objectConfig" }
+    ]
 };
 
 module.exports = configSchema;
