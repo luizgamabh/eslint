@@ -86,7 +86,7 @@ module.exports = {
                         "**/linter/**/*",
                         "**/rules/**/*",
                         "**/source-code/**/*",
-                        "**/testers/**/*"
+                        "**/rule-tester/**/*"
                     ]
                 }]
             }
@@ -100,7 +100,7 @@ module.exports = {
                         "**/linter/**/*",
                         "**/rules/**/*",
                         "**/source-code/**/*",
-                        "**/testers/**/*"
+                        "**/rule-tester/**/*"
                     ]
                 }]
             }
@@ -117,8 +117,8 @@ module.exports = {
                         "**/init/**/*",
                         "**/rules/**/*",
                         "**/source-code/**/*",
-                        "**/testers",
-                        "**/testers/**/*"
+                        "**/rule-tester",
+                        "**/rule-tester/**/*"
                     ]
                 }]
             }
@@ -137,8 +137,8 @@ module.exports = {
                         "**/linter/**/*",
                         "**/source-code",
                         "**/source-code/**/*",
-                        "**/testers",
-                        "**/testers/**/*"
+                        "**/rule-tester",
+                        "**/rule-tester/**/*"
                     ]
                 }]
             }
@@ -157,8 +157,8 @@ module.exports = {
                         "**/rules/**/*",
                         "**/source-code",
                         "**/source-code/**/*",
-                        "**/testers",
-                        "**/testers/**/*"
+                        "**/rule-tester",
+                        "**/rule-tester/**/*"
                     ]
                 }]
             }
@@ -177,14 +177,14 @@ module.exports = {
                         "**/linter/**/*",
                         "**/rules",
                         "**/rules/**/*",
-                        "**/testers",
-                        "**/testers/**/*"
+                        "**/rule-tester",
+                        "**/rule-tester/**/*"
                     ]
                 }]
             }
         },
         {
-            files: ["lib/testers/**/*"],
+            files: ["lib/rule-tester/**/*"],
             rules: {
                 "no-restricted-modules": ["error", {
                     patterns: [
