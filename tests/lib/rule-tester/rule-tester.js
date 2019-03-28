@@ -9,7 +9,7 @@
 //------------------------------------------------------------------------------
 const sinon = require("sinon"),
     EventEmitter = require("events"),
-    RuleTester = require("../../../lib/testers/rule-tester"),
+    RuleTester = require("../../../lib/rule-tester/rule-tester"),
     assert = require("chai").assert,
     nodeAssert = require("assert");
 

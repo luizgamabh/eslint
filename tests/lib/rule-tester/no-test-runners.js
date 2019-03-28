@@ -6,7 +6,7 @@
 
 /* eslint-disable no-global-assign*/
 const assert = require("assert");
-const RuleTester = require("../../../lib/testers/rule-tester");
+const RuleTester = require("../../../lib/rule-tester/rule-tester");
 const tmpIt = it;
 const tmpDescribe = describe;
 
