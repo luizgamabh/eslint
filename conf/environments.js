@@ -14,7 +14,14 @@ const globals = require("globals");
 // Public Interface
 //------------------------------------------------------------------------------
 
-module.exports = {
+/**
+ * @typedef {Object} Environment
+ * @property {Record<string, GlobalConf>} [globals] The definition of global variables.
+ * @property {Object} [parserOptions] The parser options that will be enabled under this environment.
+ */
+
+/** @type {Map<string, Environment>} */
+module.exports = new Map(Object.entries({
     builtin: {
         globals: globals.es5
     },
@@ -106,4 +113,4 @@ module.exports = {
     greasemonkey: {
         globals: globals.greasemonkey
     }
-};
+}));
